@@ -31,22 +31,6 @@ class _listeFruitsState extends State<listeFruits> {
 
   @override
   Widget build(BuildContext context) {
-    Color itemColorPicker(int value) {
-      if (value % 2 == 0) {
-        return Color.fromARGB(150, 150, 20, 20); // pair
-      } else {
-        return Color.fromARGB(150, 20, 20, 150); // impair
-      }
-    }
-
-    Color buttonColorPicker(int value) {
-      if (value == 0) {
-        return Color.fromARGB(255, 0, 0, 0);
-      } else {
-        return Color.fromARGB(180, 0, 150, 0);
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme
@@ -66,14 +50,16 @@ class _listeFruitsState extends State<listeFruits> {
                   leading: Image(image: AssetImage("images/${listeFruitsIndex.choixImageOuTitre(_fruits[index], true)}")) ,
                   title: Text(_fruits[index].toString()),
                   textColor: const Color.fromARGB(255, 255, 255, 255),
-                  tileColor: itemColorPicker(_fruits[index]));
+                  tileColor: listeFruitsIndex.itemColorPicker(_fruits[index]),
+                  contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              );
             },
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-        backgroundColor: buttonColorPicker(_counter),
+        backgroundColor: listeFruitsIndex.buttonColorPicker(_counter),
         foregroundColor: Color.fromARGB(255, 255, 255, 255),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
