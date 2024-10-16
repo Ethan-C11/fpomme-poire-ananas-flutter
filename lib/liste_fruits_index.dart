@@ -14,8 +14,8 @@ class listeFruitsIndex {
     return true;
   }
 
-  static String choixImageOuTitre(int nombre, bool image) {
-    if (image) {
+  static String choixImageOuTitre(int nombre, bool estUneImage) {
+    if (estUneImage) {
       if (nombre % 2 == 0) {
         return "poire.png";
       }
@@ -33,19 +33,20 @@ class listeFruitsIndex {
     return "$nombre : Nombre impair";
   }
 
-  static Color itemColorPicker(int value) {
+  static Color itemColorPicker(int value,  [int? alpha]) {
+    alpha = alpha ?? 255;
     if (value % 2 == 0) {
-      return Color.fromARGB(150, 150, 20, 20); // pair
+      return Color.fromARGB(alpha, 150, 20, 20); // pair
     } else {
-      return Color.fromARGB(150, 40, 150, 40); // impair
+      return Color.fromARGB(alpha, 40, 150, 40); // impair
     }
   }
 
   static Color buttonColorPicker(int value) {
     if (value == 0) {
-      return Color.fromARGB(255, 0, 0, 0);
+      return const Color.fromARGB(255, 0, 0, 0);
     } else {
-      return Color.fromARGB(120, 0, 0, 190);
+      return const Color.fromARGB(120, 0, 0, 190);
     }
   }
 }
